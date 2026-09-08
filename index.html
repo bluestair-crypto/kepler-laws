@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>케플러 법칙 가상실험실</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="eyebrow">고등학교 물리학 가상실험</span><h1>케플러 법칙 가상실험실</h1></div>
+    <button id="fullscreen" class="ghost" type="button" aria-label="전체 화면 전환">⛶ 전체 화면</button>
+  </header>
+
+  <nav class="tabs" aria-label="케플러 법칙 선택">
+    <button class="tab active" data-tab="law1">01 <span>케플러 제1법칙</span></button>
+    <button class="tab" data-tab="law2">02 <span>케플러 제2법칙</span></button>
+    <button class="tab" data-tab="law3">03 <span>케플러 제3법칙</span></button>
+  </nav>
+
+  <main>
+    <section id="law1" class="law-panel active" aria-labelledby="law1-title">
+      <div class="panel-heading"><div><span class="step-label">궤도의 모양</span><h2 id="law1-title">제1법칙 · 타원 궤도의 초점</h2></div><p>이심률을 바꾸며 태양의 위치를 관찰하세요.</p></div>
+      <div class="lab-grid">
+        <div class="workspace">
+          <div class="section-title"><span>2</span><div><small>관찰하기</small><strong>타원 궤도 실험</strong></div><div class="legend"><i class="sun-dot"></i>태양 <i class="planet-dot"></i>행성</div></div>
+          <div class="canvas-wrap"><canvas id="canvas1"></canvas></div>
+          <div class="readout"><span>현재 이심률</span><strong>e = <output id="e-value">0.50</output></strong><span id="shape-note">타원 궤도</span></div>
+        </div>
+        <aside>
+          <div class="card prediction"><div class="card-title"><span>1</span><h3>예측하기</h3></div><p>태양은 타원의 중심에 있을까요, 초점에 있을까요?</p></div>
+          <div class="card"><div class="card-title"><span>3</span><h3>조작하기</h3></div>
+            <label class="range-label" for="eccentricity">이심률 <b>0</b><b>0.8</b></label><input id="eccentricity" type="range" min="0" max="0.8" step="0.01" value="0.5">
+            <div class="controls"><button id="toggle1">⏸ 정지</button><button id="orbit1" class="toggle active">궤도 ON</button><button id="focus1" class="toggle active">초점 ON</button><button id="center1" class="toggle active">중심 ON</button></div>
+          </div>
+          <div class="card questions"><div class="card-title"><span>4</span><h3>규칙 발견하기 · 수업 질문</h3></div><ul><li>태양은 타원의 중심에 있을까요, 초점에 있을까요?</li><li>이심률이 커질수록 궤도의 모양은 어떻게 변하나요?</li><li>e = 0일 때 두 초점은 어디에 있을까요?</li></ul></div>
+          <div class="card reveal-card"><div class="card-title"><span>5</span><h3>법칙 확인하기</h3></div><button class="reveal" data-target="answer1">법칙 확인</button><div id="answer1" class="answer" hidden><b>케플러 제1법칙</b><p>행성은 태양을 한 초점으로 하는 타원 궤도를 따라 운동한다.</p></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="law2" class="law-panel" aria-labelledby="law2-title">
+      <div class="panel-heading"><div><span class="step-label">면적 속도</span><h2 id="law2-title">제2법칙 · 같은 시간, 같은 면적</h2></div><p>행성의 속도와 태양을 잇는 선이 쓸어가는 면적을 비교하세요.</p></div>
+      <div class="lab-grid">
+        <div class="workspace">
+          <div class="section-title"><span>2</span><div><small>관찰하기</small><strong>면적 속도 실험</strong></div><div class="legend"><i class="area1-dot"></i>A1 <i class="area2-dot"></i>A2</div></div>
+          <div class="canvas-wrap"><canvas id="canvas2"></canvas></div>
+          <div class="equal-time-guide" id="equal-time-guide">각 점 사이의 시간 간격 Δt는 같습니다.</div>
+          <div class="area-readout"><div><span>선택 구간 1</span><strong>A1 = <output id="area1">—</output></strong></div><div><span>선택 구간 2</span><strong>A2 = <output id="area2">—</output></strong></div><p id="area-compare">등시간 위치 표시를 누른 뒤 위치점 두 개를 선택하세요.</p></div>
+          <div class="velocity-compare" aria-label="근일점과 원일점 상대 속력 비교">
+            <div><span>근일점 상대 속력</span><b id="peri-speed">4.26</b><i class="speed-bar peri"></i></div>
+            <strong>&gt;</strong>
+            <div><span>원일점 상대 속력</span><b id="aphe-speed">1.00</b><i class="speed-bar aphe"></i></div>
+          </div>
+        </div>
+        <aside>
+          <div class="card prediction"><div class="card-title"><span>1</span><h3>예측하기</h3></div><p>행성은 근일점과 원일점 중 어디에서 더 빠르게 움직일까요?</p></div>
+          <div class="card"><div class="card-title"><span>3</span><h3>조작하기</h3></div><div class="controls"><button id="play2">▶ 시작</button><button id="pause2">⏸ 일시정지</button><button id="reset2">↺ 처음으로</button><button id="slow2">− 느리게</button><button id="fast2">＋ 빠르게</button><button id="marks2" class="wide">등시간 위치 표시</button><button id="velocity2" class="toggle active wide">속도 벡터 ON</button></div><p class="speed-status">시간 배속: <output id="speed-value">1.0</output>×</p></div>
+          <div class="card questions"><div class="card-title"><span>4</span><h3>규칙 발견하기 · 수업 질문</h3></div><ul><li>근일점과 원일점 중 어디에서 더 빠를까요?</li><li>같은 시간 동안 쓸고 지나간 두 면적을 비교해 보세요.</li><li>궤도에서 속도 벡터의 길이는 어떻게 달라지나요?</li></ul></div>
+          <div class="card reveal-card"><div class="card-title"><span>5</span><h3>법칙 확인하기</h3></div><button class="reveal" data-target="answer2">법칙 확인</button><div id="answer2" class="answer" hidden><b>케플러 제2법칙</b><p>태양과 행성을 연결한 선은 같은 시간 동안 같은 면적을 쓸고 지나간다.</p><p>따라서 행성은 태양에 가까울 때 빠르고, 멀리 있을 때 느리게 움직인다.</p></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="law3" class="law-panel" aria-labelledby="law3-title">
+      <div class="panel-heading"><div><span class="step-label">주기와 거리</span><h2 id="law3-title">제3법칙 · 데이터로 찾는 비례 관계</h2></div><p>같은 중심 천체인 태양을 공전하는 네 행성의 데이터를 분석하세요.</p></div>
+      <div class="law3-grid">
+        <div class="workspace data-workspace">
+          <div class="section-title"><span>2</span><div><small>관찰하기</small><strong>태양계 행성 데이터</strong></div><div class="graph-actions"><button id="calculate">계산하기</button><button id="show-relation" disabled>관계 확인하기</button></div></div>
+          <div class="table-scroll"><table><thead><tr><th>행성</th><th>a (AU)</th><th>T (년)</th><th>a³</th><th>T²</th><th>T²/a³</th></tr></thead><tbody id="planet-data"></tbody></table></div>
+          <p class="table-note">a는 궤도 긴반지름입니다. 계산하기 전에는 유도값이 숨겨집니다.</p>
+          <div class="graph-card locked" id="graph-card"><div><h3>T²과 a³의 관계</h3><span>● 실제 행성 &nbsp; ◆ 새 행성</span></div><canvas id="graph"></canvas><p class="axis-y">T² (년²)</p><p class="axis-x">a³ (AU³)</p><p class="graph-prompt" id="graph-prompt">먼저 표의 값을 계산해 보세요.</p><p class="theory-label" id="theory-label" hidden>T² = a³ (태양 공전, AU·년 단위)<small>데이터 회귀선이 아닌 이론적 관계선</small></p></div>
+        </div>
+        <aside>
+          <div class="card prediction"><div class="card-title"><span>1</span><h3>예측하기</h3></div><p>태양에서 멀리 있는 행성일수록 공전주기는 어떻게 변할까요?</p></div>
+          <div class="card"><div class="card-title"><span>3</span><h3>조작하기 · 새 행성 만들기</h3></div><label for="new-a">궤도 긴반지름 a</label><input id="new-a" type="range" min="0.3" max="5" step="0.01" value="2.5"><div class="new-planet"><div><span>긴반지름</span><b><output id="new-a-value">2.50</output> AU</b></div><div><span>공전주기</span><b><output id="new-t-value">3.95</output> 년</b></div></div><p class="formula-mini">T = √(a³)<br><span>T = a<sup>3/2</sup> (태양 공전 기준)</span></p></div>
+          <div class="card questions"><div class="card-title"><span>4</span><h3>규칙 발견하기 · 수업 질문</h3></div><ul><li>태양에서 멀수록 공전주기는 어떻게 변하나요?</li><li>어떤 값을 서로 비교하면 일정한 관계가 나타날까요?</li><li>그래프의 점들은 어떤 모양으로 배열되나요?</li></ul></div>
+          <div class="card reveal-card"><div class="card-title"><span>5</span><h3>법칙 확인하기</h3></div><button class="reveal" data-target="answer3">법칙 확인</button><div id="answer3" class="answer" hidden><b>케플러 제3법칙</b><p>같은 중심 천체를 공전하는 행성에서 공전주기의 제곱은 궤도 긴반지름의 세제곱에 비례한다.</p><div class="formula">T² ∝ a³<br>T²/a³ = 일정</div></div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>고등학교 물리학 · 역학과 에너지 · 케플러 법칙 탐구</footer>
+  <script src="script.js"></script>
+</body>
+</html>
